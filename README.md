@@ -26,14 +26,33 @@ EduCrypt is a robust web-based application designed to streamline and secure edu
 
 - 📂 **Document Handling**
   - Upload, parse, and manage PDF documents
+ 
+## ✨ Extra Features
 
+- 🔎 **Student PDF Upload Parsing**
+  - Extract and parse PDFs with student assignments
+- 🧠 **Gemini AI API Integration**
+  - Experimental AI-based support system (for document Q&A or code analysis)
+- 📧 **Email Notifications**
+  - Auto-email students or faculty via Gmail SMTP
+- 🛡️ **Role-based Access Control**
+  - Custom dashboards for Admin, Faculty, and Students
+- 📝 **Assignment Grading/Tracking**
+  - Faculty can view and manage student submissions
+- 🔐 **Secure Token-Based Auth**
+  - JWT sessions, token validation, and protected routes
+- ⏳ **Timestamps & Submission Logs**
+  - Logs of assignment uploads with auto time capture
 ---
 
 ## 🛠️ Tech Stack
 
 **Frontend:**
-- HTML, TailwindCSS (basic UI)
-
+- HTML5, CSS3, TailwindCSS
+- JavaScript (vanilla)
+- Student-side views (file upload, compiler interface, attendance display)
+- Responsive layout design for usability across devices
+- 
 **Backend:**
 - Node.js with Express
 - MongoDB with Mongoose
