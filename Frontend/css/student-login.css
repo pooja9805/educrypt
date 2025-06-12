@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: #0d0d0d;
+    color: #0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-box {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid #0ff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00f9ff80;
+    text-align: center;
+    width: 350px;
+  }
+  
+  .logo-icon {
+    height: 50px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px #0ff);
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: #0ff;
+    text-shadow: 0 0 10px #0ff;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #a3f8ff;
+    font-size: 0.9rem;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #0ff;
+    border-radius: 8px;
+    color: #0ff;
+    font-size: 1rem;
+  }
+  
+  .input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #0ff;
+  }
+  
+  .forgot-link {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  
+  .forgot-link a {
+    color: #0ff;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .forgot-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #00f9ff;
+    border: none;
+    color: #0d0d0d;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: #0ff;
+    box-shadow: 0 0 15px #00f9ff;
+  }
+  

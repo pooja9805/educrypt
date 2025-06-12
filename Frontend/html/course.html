@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Description | EduCrypt</title>
+  <link rel="stylesheet" href="../css/course.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-[#07081a] text-white font-sans overflow-x-hidden">
+  <header class="main-header">
+    <div class="logo">
+      <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />
+      <span class="logo-text">EduCrypt</span>
+    </div>
+    <nav class="top-nav">
+      <a href="../html/index.html">Home</a>
+      <a href="../html/features.html">Features</a>
+      <a href="../html/about.html">About</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <main class="course-section p-10 max-w-6xl mx-auto">
+  
+    <!-- 📚 Course Info -->
+    <section class="section-block">
+      <h2>📘 Course Info</h2>
+      <h1 id="courseTitle" class="text-3xl font-extrabold text-white">Course Title</h1>
+      <p id="courseDescription" class="mt-2 text-gray-300">Course description goes here...</p>
+    </section>
+  
+    <!-- 📢 Announcements -->
+    <section class="section-block">
+      <h2>📢 Announcements</h2>
+      <ul id="announcementList" class="text-gray-300"></ul>
+    </section>
+  
+    <!-- 📁 Materials -->
+    <section class="section-block">
+      <h2>📁 Materials</h2>
+      <ul id="materialsList" class="text-gray-300"></ul>
+    </section>
+  
+    <!-- 📝 Assignments -->
+    <section class="section-block">
+      <h2>📝 Assignments</h2>
+      <div id="assignmentsContainer" class="space-y-6"></div>
+    </section>
+  
+    <!-- 📤 Upload Section -->
+    <section id="uploadSection" class="section-block hidden">
+      <h2>📤 Upload Assignment</h2>
+      <form id="uploadForm" class="space-y-4">
+        <input type="file" name="file" id="fileInput" required class="block w-full text-sm text-gray-400 bg-transparent border border-[#00d8ff] p-2 rounded">
+        <input type="password" name="password" id="encryptionKey" placeholder="Enter encryption key..." required class="block w-full text-sm text-gray-400 bg-transparent border border-[#00d8ff] p-2 rounded">
+        <input type="hidden" name="assignmentId" id="assignmentIdField">
+        <button type="submit" class="bg-[#00d8ff] text-black font-bold px-6 py-2 rounded">Submit</button>
+      </form>
+    </section>
+  </main>
+  <script src="../js/course.js"></script>
+</body>
+</html>

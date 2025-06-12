@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Login - EduCrypt</title>
+  <link rel="stylesheet" href="../css/student-login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+        <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />      <h2 class="title">Student Login</h2>
+
+      <form id="studentLoginForm">
+        <div class="input-group">
+          <label for="username"><i class="fas fa-user"></i> Username</label>
+          <input type="text" id="username" placeholder="Enter your username" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password"><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required />
+        </div>
+
+        <div class="forgot-link">
+          <a href="forgot-password.html">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <p id="loginError" style="color: red; font-size: 14px;"></p>
+  
+   <!-- 🔥 Cleanup script here -->
+   <script>
+    // Clear faculty info if switching users
+    window.onload = () => {
+      localStorage.removeItem("userId");
+      localStorage.removeItem("userRole");
+    };
+  </script>
+ 
+<script src="../js/student.js"></script>
+
+</body>
+</html>

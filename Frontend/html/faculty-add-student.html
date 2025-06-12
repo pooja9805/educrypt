@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Student | EduCrypt</title>
+  <link rel="stylesheet" href="../css/faculty-add-student.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Student</h1>
+
+    <form id="addStudentForm">
+      <label for="studentName">Full Name</label>
+      <input type="text" id="studentName" placeholder="Enter full name" required />
+
+      <label for="studentUsername">Username</label>
+      <input type="text" id="studentUsername" placeholder="Enter username" required />
+
+      <label for="studentEmail">Email</label>
+      <input type="email" id="studentEmail" placeholder="Enter student email" required />
+
+      <label for="courseSearch">Select Courses:</label>
+      <input type="text" id="courseSearch" placeholder="Search courses..." />
+      <div id="courseSuggestions" class="suggestion-box"></div>
+      <div id="selectedCourses" class="selected-tags"></div>      
+      </select>
+
+      <button type="submit">Add Student</button>
+    </form>
+
+    <div id="responseMessage" class="response-msg"></div>
+  </div>
+
+  <script src="../js/faculty-add-student.js"></script>
+</body>
+</html>

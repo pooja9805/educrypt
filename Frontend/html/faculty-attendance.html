@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Faculty Attendance | EduCrypt</title>
+  <link rel="stylesheet" href="../css/faculty-attendance.css" />
+</head>
+<body>
+  <div class="attendance-container">
+    <h1>Mark Attendance</h1>
+
+    <div id="attendancePanel" style="display: none;">
+      <label for="courseDropdown">Select Course:</label>
+      <select id="courseDropdown">
+        <option>Select a course</option>
+      </select>
+
+      <label for="attendanceDate">Attendance Date:</label>
+      <input type="date" id="attendanceDate" />
+
+      <ul id="studentList"></ul>
+
+      <div class="attendance-actions">
+        <button onclick="submitAttendance()">Submit Attendance</button>
+      </div>
+
+      <div id="feedbackMessage" class="feedback"></div>
+    </div>
+
+    <div id="attendanceHistorySection">
+      <h2>Previous Attendance</h2>
+      <div id="attendanceHistory"></div>
+    </div>
+  </div>
+
+  <script src="../js/faculty-attendence.js"></script>
+</body>
+</html>

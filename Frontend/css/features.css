@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: #0d0d0d;
+    color: #0ff;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #0ff;
+    padding: 15px 30px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #0ff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover,
+  nav ul li.active a {
+    color: #00f9ff;
+    text-shadow: 0 0 8px #00f9ff;
+  }
+  
+  main {
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .glow-heading {
+    font-size: 2.8rem;
+    margin-bottom: 40px;
+    color: #00f9ff;
+    text-shadow: 0 0 20px #00f9ff;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 0 40px;
+  }
+  
+  .feature-card {
+    background: rgba(0, 255, 255, 0.07);
+    border: 1px solid #00f9ff;
+    border-radius: 16px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+  }
+  
+  .feature-card:hover {
+    background: rgba(0, 255, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 0 16px rgba(0, 255, 255, 0.5);
+  }
+  
+  .feature-card i {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    color: #00f9ff;
+  }
+  
+  .feature-card h3 {
+    margin: 10px 0 10px;
+    font-size: 1.5rem;
+  }
+  
+  .feature-card p {
+    font-size: 0.95rem;
+    color: #c8f6ff;
+  }
+  

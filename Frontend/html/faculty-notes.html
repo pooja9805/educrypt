@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Faculty Notes | EduCrypt</title>
+  <link rel="stylesheet" href="../css/faculty-notes.css" />
+</head>
+<body>
+  <div class="notion-container">
+    <header class="header">
+      <h1>My Notes</h1>
+    </header>
+
+    <div class="note-toolbar">
+      <input type="text" id="noteTitle" placeholder="Title..." />
+      <button onclick="saveNote()">Save</button>
+    </div>
+
+    <textarea id="noteContent" placeholder="Start typing your notes here..."></textarea>
+
+    <div class="note-actions">
+      <button onclick="createNewNote()">New Note</button>
+      <button onclick="shareNote()">Share</button>
+    </div>
+
+    <div class="note-sidebar">
+      <h3>My Notes</h3>
+      <ul id="noteList"></ul>
+    </div>
+  </div>
+
+  <script src="../js/faculty-notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduCrypt - Compiler</title>
+  <link rel="stylesheet" href="../css/compiler.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-bar">
+      <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />
+      <h1>EduCrypt</h1>
+    </div>
+    <nav>
+      <a href="../html/index.html">Home</a>
+      <a href="../html/features.html">Features</a>
+      <a href="../html/about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="compiler-container">
+    <h2>💻 Online Code Compiler</h2>
+
+    <div class="language-section">
+      <label for="languageSelector">Select Language:</label>
+      <select id="languageSelector">
+        <option value="python">Python</option>
+        <option value="cpp">C++</option>
+        <option value="java">Java</option>
+        <option value="javascript">JavaScript</option>
+      </select>
+    </div>
+
+    <textarea id="codeEditor" placeholder="// Write your code here..."></textarea>
+
+    <div class="compiler-buttons">
+      <button onclick="runCode()">▶️ Run Code</button>
+      <button onclick="saveAsDoc()">📄 Save to DOC</button>
+      <button onclick="submitToAssignment()">📤 Submit to Assignment</button>
+    </div>
+
+    <div class="output-section">
+      <h3>Output:</h3>
+      <pre id="outputConsole">⏳ Waiting for execution...</pre>
+    </div>
+  </section>
+
+  <script src="../js/compiler.js"></script>
+</body>
+</html>

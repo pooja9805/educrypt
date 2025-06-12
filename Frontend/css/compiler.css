@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    background: #0f172a;
+    font-family: 'Segoe UI', sans-serif;
+    color: #00ffff;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    align-items: center;
+    background: #14213d;
+    box-shadow: 0 0 10px #00ffff55;
+  }
+  
+  header h1 {
+    font-size: 26px;
+  }
+  
+  nav a {
+    color: #c0fefe;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  nav a:hover {
+    color: #00ffff;
+  }
+  
+  .compiler-container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .language-section {
+    margin-bottom: 20px;
+  }
+  
+  #languageSelector {
+    padding: 10px;
+    background: #1f2937;
+    color: #00ffff;
+    border: 1px solid #00ffff99;
+    border-radius: 6px;
+  }
+  
+  #codeEditor {
+    width: 100%;
+    height: 300px;
+    background: #1e293b;
+    color: #00ffea;
+    font-family: monospace;
+    font-size: 16px;
+    border: 2px solid #00ffff88;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .compiler-buttons button {
+    background-color: #1f4068;
+    color: #00ffff;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .compiler-buttons button:hover {
+    background-color: #00ffff44;
+  }
+  
+  .output-section {
+    background-color: #0e1e2f;
+    padding: 20px;
+    border: 1px solid #00ffff44;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #0ff;
+  }
+  
+  #outputConsole {
+    white-space: pre-wrap;
+  }
+  

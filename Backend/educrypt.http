@@ -1,0 +1,325 @@
+### ----------------------------------
+### REGISTER: Faculty (One-time setup)
+POST http://localhost:5000/api/faculty/register
+Content-Type: application/json
+
+{
+  "name": "Raihaan Patel",
+  "username": "raihaan_patel",
+  "email": "raihaan_patel@gmail.com",
+  "password": "raihaan@123"
+}
+
+### ----------------------------------
+### Save Todo
+POST http://localhost:5000/api/notes/todo
+Content-Type: application/json
+
+{
+  "userId": "67fc2bdce4f85d769e1b321c",
+  "userType": "faculty",
+  "title": "Test Manual To-Do",
+  "tasks": [
+    { "text": "Try this out", "done": false },
+    { "text": "Fix any bugs", "done": true }
+  ]
+}
+
+
+### ----------------------------------
+### LOGIN: Faculty (to get JWT token)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "raihaan_patel",
+  "password": "raihaan@123",
+  "role": "faculty"
+}
+
+### ✅ Create Test Course
+POST http://localhost:5000/api/faculty/create-course
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NTc5NTkyLCJleHAiOjE3NDUxODQzOTJ9.qtozkkLbpFJWhx3La1FcoTgTo3jDYrSInQS9t_uuWww
+Content-Type: application/json
+
+{
+  "courseId": "POO103",
+  "name": "Blockchain Technology",
+  "description": "Intro to Blockchain Technology"
+}
+
+### ✏️ Update Course
+PUT http://localhost:5000/api/courses/67fc2c5ce4f85d769e1b3223
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ1MTAxNzY4LCJleHAiOjE3NDU3MDY1Njh9.bzCUjh_p6rJPVgpGCiLzsVK7ZfNZExnQuUfN4sNI_KU
+Content-Type: application/json
+
+{
+  "name": "Updated Course Title",
+  "description": "This is the updated description for the course."
+}
+
+### 🗑️ Delete Course
+DELETE http://localhost:5000/api/faculty/courses/67fc2c5ce4f85d769e1b3223
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ1MTAxNzY4LCJleHAiOjE3NDU3MDY1Njh9.bzCUjh_p6rJPVgpGCiLzsVK7ZfNZExnQuUfN4sNI_KU
+
+### ✅ Add Student to Multiple Courses
+POST http://localhost:5000/api/faculty/add-student
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NTgwOTgzLCJleHAiOjE3NDUxODU3ODN9.oGZI9SW0p036_ddANTDe0A5w4twtgkzxj7dWjqkWHQg
+
+{
+  "name": "Kesha Mehta",
+  "username": "kesha_mehta",
+  "email": "liladharbagul401@gmail.com",
+  "courseIds": ["CCV101", "AI-ML-2025", "PHP101"]
+}
+
+
+
+### ----------------------------------
+### LOGIN: Student (after faculty adds them)
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "kesha_mehta",
+  "password": "c3ae85f2",
+  "role": "student"
+}
+
+### ----------------------------------
+### GET ALL STUDENTS (for verification)
+GET http://localhost:5000/api/students
+
+### MARK ATTENDANCE
+POST http://localhost:5000/api/attendance/mark
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NjU4NjYzLCJleHAiOjE3NDUyNjM0NjN9.1erUA0UXLx6bGRHB_x9IRMBhC9Aa96w1YxMuYLmxVvo
+
+{
+  "courseId": "67fc1b5aa49b2a2d7fcca50c", 
+  "records": [
+    {
+      "studentId": "67fc4306760e2205f9db0d1e",
+      "status": "Present"
+    },
+    {
+      "studentId": "67fc4475760e2205f9db0d2d",
+      "status": "Absent"
+    }
+  ]
+}
+
+### ----------------------------------
+### SAVE NOTE (Student or Faculty)
+POST http://localhost:5000/api/notes/save
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0OTY3Nzk3LCJleHAiOjE3NDU1NzI1OTd9.VCl6tFoAfCmne0bJxsjicB134Fq8ctRCmwlub68wKTY
+
+{
+  "userId": "67fc2bdce4f85d769e1b321c",
+  "title": "Blockchain Technology Basics",
+  "content": "Blockchain is a distributed ledger technology..."
+}
+
+### ----------------------------------
+### Test API for Updating a Note
+PUT http://localhost:5000/api/notes/680219426633fd1d20eb091b
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0OTY3Nzk3LCJleHAiOjE3NDU1NzI1OTd9.VCl6tFoAfCmne0bJxsjicB134Fq8ctRCmwlub68wKTY
+
+{
+  "title": "Blockchain Technology Basics",
+  "content": "Blockchain is a distributed ledger technology that allows multiple parties to maintain a shared database without the need for a central authority."
+}
+
+### Test API for Deleting a Note
+DELETE http://localhost:5000/api/notes/680219426633fd1d20eb091b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0OTY3Nzk3LCJleHAiOjE3NDU1NzI1OTd9.VCl6tFoAfCmne0bJxsjicB134Fq8ctRCmwlub68wKTY
+
+### ----------------------------------
+### GET NOTES (Student or Faculty)
+GET http://localhost:5000/api/notes?userId=67fc2bdce4f85d769e1b321c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0OTY3Nzk3LCJleHAiOjE3NDU1NzI1OTd9.VCl6tFoAfCmne0bJxsjicB134Fq8ctRCmwlub68wKTY
+
+### 📤 Upload Assignment (Working Version)
+POST http://localhost:5000/api/assignments/upload
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0Nzg4MzE4LCJleHAiOjE3NDUzOTMxMTh9.UyKS8MhDcvks0mKfoqttg5vQhAIkqEELIoF6qHE7kgk
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="title"
+
+Assignment 1 - Cyber Ethics
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="description"
+
+Please complete by the deadline.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="courseId"
+
+67f6e2283886e337d04039aa
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="dueDate"
+
+2025-04-15
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="assignment.pdf"
+Content-Type: application/pdf
+
+< ./form.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### 📥 Submit Assignment (Student)
+POST http://localhost:5000/api/submissions/submit
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="assignmentId"
+
+67f79a42a4119f6fad145d30
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="password"
+
+12345678
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="my-solution.pdf"
+Content-Type: application/pdf
+
+< ./my-solution.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### 🔓 Decrypt Submission (Faculty/Admin)
+POST http://localhost:5000/api/submissions/decrypt/67f7a5aef0b92ac7546dc464
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjY3NDliMGNmMDRlNGE0NzY1ZGI3YSIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0MjMwOTQwLCJleHAiOjE3NDQ4MzU3NDB9.Rs42ylKLANZQwWaESR-PlORVGkbmxHOj1nfTSrEetBQ
+Content-Type: application/json
+
+{
+  "password": "12345678"
+}
+
+### 🔐 Forgot Password - Request OTP
+POST http://localhost:5000/api/auth/forgot-password
+Content-Type: application/json
+
+{
+  "email": "shaunak_jani@gmail.com"
+}
+
+
+### 🔁 Reset Password with OTP
+POST http://localhost:5000/api/auth/reset-password
+Content-Type: application/json
+
+{
+  "email": "shaunak_jani@gmail.com",
+  "otp": "976437", 
+  "newPassword": "Shaunak@0913"
+}
+
+### 📥 Get Submissions for Assignment (Faculty)
+GET http://localhost:5000/api/submissions/assignment/6803a6c1237ac24aac1064cb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ1MDkzMTYxLCJleHAiOjE3NDU2OTc5NjF9.k3r2lP7ERgyuPXbcHbp9HirP0L4bcyXbcyLnwyuuEWc
+### 📥 View Student Assignments (Submitted + Pending)
+GET http://localhost:5000/api/students/assignments
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDE0OGI1YTczNTU1ODdhMTExMmFkYiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ1MDE0NTI4LCJleHAiOjE3NDU2MTkzMjh9.N3D_JAhxY17NKXuLl69KEU38WgXvEtZBm62RKLyIhiE
+
+### 🔔 Get Student Notifications
+GET http://localhost:5000/api/students/notifications
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+
+### Chatbot
+POST http://localhost:5000/api/chat/ask
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NzQzMDEwLCJleHAiOjE3NDUzNDc4MTB9.o1ghONMszyLFPZAVQfxd76yaeiPzCCiDIbfFg5IrCVc
+Content-Type: application/json
+
+{
+  "message": "What is Vulnerability Assessment and Penetration Testing?"
+}
+
+### 🧪 Compile a Python Script
+POST http://localhost:5000/api/compiler/run
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+Content-Type: application/json
+
+{
+  "code": "#include <stdio.h>\nint main() {\n    int i, j, rows = 5;\n    for(i = 1; i <= rows; i++) {\n        for(j = 1; j <= i; j++) {\n            printf(\"* \");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}",
+  "language": "c",
+  "versionIndex": "5"
+}
+
+### 🧑‍🎓 Get Student Dashboard (Courses + Name)
+GET http://localhost:5000/api/students/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDJiZWQ0YjQzY2ZiYjAxMWQyZDQyMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ1MDIyMDc4LCJleHAiOjE3NDU2MjY4Nzh9.enLRV7w5sP0kbNBcwrqgAsAiEy3FuuIfBEKJZ-N00Sc
+
+### 📊 Get Attendance Summary
+GET http://localhost:5000/api/students/attendance-summary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0ODg0NDE1LCJleHAiOjE3NDU0ODkyMTV9.UQCXSG7VIYxTKxWyp6b8br7ACCbdLHtzHYk-6dtf6X4
+
+### ✅ Create Attendance Record (Test Only)
+POST http://localhost:5000/api/attendance/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjY3NDliMGNmMDRlNGE0NzY1ZGI3YSIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0MjMwOTQwLCJleHAiOjE3NDQ4MzU3NDB9.Rs42ylKLANZQwWaESR-PlORVGkbmxHOj1nfTSrEetBQ
+
+{
+  "studentId": "67f6e2f43886e337d04039ad",
+  "courseId": "67f6e2283886e337d04039aa",
+  "attendedSessions": 7,
+  "totalSessions": 10
+}
+
+### 📝 Create Note
+POST http://localhost:5000/api/notes/save
+Content-Type: application/json
+Authorization: Bearer YOUR_STUDENT_JWT_TOKEN
+
+{
+  "title": "Cybersecurity Recap",
+  "content": "Learned about encryption and hashing."
+}
+
+### 🔄 Get Notes
+GET http://localhost:5000/api/notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+
+### 🖊️ Update Note
+PUT http://localhost:5000/api/notes/67f83d56c3c2a466790cc3da
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+
+{
+  "title": "Updated Note",
+  "content": "Updated content here..."
+}
+
+### ❌ Delete Note
+DELETE http://localhost:5000/api/notes/NOTE_ID
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+
+### Get My Courses (for Faculty)
+GET http://localhost:5000/api/faculty/my-courses
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NzQwNzQ4LCJleHAiOjE3NDUzNDU1NDh9.3rXd9cV-ydwdHeJPDif_0DEGdqPQJn6UIWhT1RU9gUs
+Content-Type: application/json
+
+### Faculty Dashboard API - Get Courses Created by Faculty
+GET http://localhost:5000/api/faculty/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NzQwNzQ4LCJleHAiOjE3NDUzNDU1NDh9.3rXd9cV-ydwdHeJPDif_0DEGdqPQJn6UIWhT1RU9gUs
+
+### Get specific course students
+GET http://localhost:5000/api/faculty/course/67fc2c5ce4f85d769e1b3223/students
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0ODI4MTAwLCJleHAiOjE3NDU0MzI5MDB9.4JvKAkyHOCmc_NyWylHx22m1PEezI3aIgtBkRjeQHJw
+Content-Type: application/json
+
+### Get Attendance History for a Course
+GET http://localhost:5000/api/attendance/course/67fc1b5aa49b2a2d7fcca50c/history
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmMyYmRjZTRmODVkNzY5ZTFiMzIxYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0OTI3OTgzLCJleHAiOjE3NDU1MzI3ODN9.plnIHtigEgTrEZ9x3mYKtUThmVj-EiEr0d7MEwXIQ_g
+Content-Type: application/json
+
+### Assignment Submission history of a student of a particular assignment
+http://localhost:5000/api/submissions/assignment/67ff5af3d8100a677cddcd9d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDJiZWQ0YjQzY2ZiYjAxMWQyZDQyMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ1MDYzNzY1LCJleHAiOjE3NDU2Njg1NjV9.RbNMjeBvO8HafwQTJAbkqm_g2NTN6RqlMkeLeTbs1Io
+
+### ✅ Get My Detailed Attendance (Student)
+GET http://localhost:5000/api/students/my-attendance
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDJiZWQ0YjQzY2ZiYjAxMWQyZDQyMSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ1MTkxNzI1LCJleHAiOjE3NDU3OTY1MjV9.4emLNV6XxDzc6akTqrwzHKbm2xyRXfav4omQXiFSjYM

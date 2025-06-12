@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Dashboard | EduCrypt</title>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <script defer src="../js/faculty-course.js"></script>
+</head>
+<body class="dark-mode">
+
+  <div class="container">
+    <header class="course-header">
+      <h1 id="course-name">Loading...</h1>
+      <p id="course-description">Loading description...</p>
+      <div class="header-buttons">
+        <button id="edit-course">✏️ Edit</button>
+        <button id="delete-course">🗑️ Delete</button>
+      </div>
+    </header>
+
+    <section class="card-section">
+      <h2>📣 Announcements</h2>
+      <form id="announcement-form">
+        <textarea placeholder="Write an announcement..." required></textarea>
+        <button type="submit">Post</button>
+      </form>
+      <ul id="announcement-list"></ul>
+    </section>
+
+    <!-- Announcements -->
+    <div class="list-block">
+    <h2>Announcements</h2>
+    <div id="announcementsList" class="card-list"></div>
+    </div>
+
+    <section class="card-section">
+      <h2>📁 Materials</h2>
+      <form id="material-upload-form">
+        <input type="file" id="material-file" required />
+        <button type="submit">Upload</button>
+      </form>
+      <ul id="material-list"></ul>
+    </section>
+
+    
+   <!-- Uploaded Materials -->
+  <div class="list-block">
+  <h2>Uploaded Materials</h2>
+  <div id="materialsList" class="card-list">
+    <div class="uploaded-material">
+      <h3>Material Title</h3>
+      <div class="material-info">
+        <span class="date">16th April, 2025</span>
+        <a href="path/to/material" target="_blank">Download</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+    <section class="card-section">
+      <h2>📝 Assignments</h2>
+      <form id="assignment-upload-form">
+        <input type="text" id="assignment-title" placeholder="Title" required />
+        <input type="date" id="assignment-due-date" required />
+        <textarea id="assignment-description" placeholder="Optional description..."></textarea>
+        <input type="file" id="assignment-file" required />
+        <button type="submit">Upload</button>
+      </form>
+      
+      <h3 class="section-heading">Uploaded Assignments</h3>
+      <div id="uploadedAssignmentsContainer" class="uploaded-assignments-container">
+      <!-- Assignments will be inserted here dynamically -->
+      </div>
+
+
+      <div id="assignment-list"></div>
+    </section>
+  </div>
+  <!-- Submission Popup Modal -->
+<div id="submissionPopup" class="submission-popup hidden">
+  <div class="popup-content">
+    <div class="popup-header">
+      <h2>📥 Student Submissions</h2>
+      <button id="closePopupBtn" class="close-btn">❌</button>
+    </div>
+    <div id="submissionList"></div>
+  </div>
+</div>
+
+</body>
+</html>

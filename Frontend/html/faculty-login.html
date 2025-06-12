@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Login | EduCrypt</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="login-body">
+  <header>
+    <div class="logo-container">
+        <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />      
+      <span>EduCrypt</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <h2 class="auth-heading">Faculty Login</h2>
+      <form id="facultyLoginForm" class="auth-form">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="facultyUsername" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="facultyPassword" required />
+        </div>
+        <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+        <p id="facultyRegisterError" class="error-text"></p>
+        <button type="submit" class="auth-btn">Login</button>
+        <p class="switch-link">Not registered yet? <a href="faculty-register.html">Sign up here</a></p>
+      </form>
+    </div>
+  </section>
+
+  <p id="facultyLoginError" class="error-text" style="color: red; font-size: 14px;"></p>
+
+  <script src="../js/faculty.js"></script>
+</body>
+</html>

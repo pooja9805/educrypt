@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Dashboard | EduCrypt</title>
+  <link rel="stylesheet" href="../css/faculty.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="logo-section">
+      <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" />
+      <span class="title cursor-pointer" id="toggleSidebar">EduCrypt</span>
+    </div>
+    <nav class="nav">
+      <a href="../html/index.html">Home</a>
+      <a href="../html/features.html">Features</a>
+      <a href="../html/about.html">About</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <aside class="sidebar">
+    <div class="faculty-profile">
+      <img id="facultyPhoto" src="../assets/default-profile.png" alt="Faculty Photo"/>
+      <h2 id="facultyName">Faculty Name</h2>
+    </div>
+    <ul>
+      <li><a href="faculty-add-student.html"><i class="fas fa-user-plus"></i> Add Student</a></li>
+      <li><a href="faculty-add-course.html"><i class="fas fa-chalkboard-teacher"></i> Add Course</a></li>
+      <li><a href="faculty-attendance.html"><i class="fas fa-check-square"></i> Mark Attendance</a></li>
+      <li><a href="notes.html"><i class="fas fa-book"></i> Notes</a></li>
+      <li><i class="fas fa-database"></i> Settings</li>
+    </ul>
+  </aside>
+
+  <main class="dashboard">
+    <section class="courses-section">
+      <h1>Your Courses</h1>
+      <div id="coursesContainer" class="course-list">
+        <!-- Courses will be populated here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Chatbot Footer -->
+  <!-- <footer class="chatbot-footer">
+    <div class="chat-controls">
+      <input id="chatInput" type="text" placeholder="Ask EduCrypt AI..." />
+      <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+    <div id="chatResponse" class="chat-response"></div>
+  </footer>
+
+
+  <div id="chat-window"></div>  -->
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("coursesContainer");
+
+  fetch("http://localhost:5000/api/faculty/my-courses", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("token") // adjust if stored differently
+    }
+  })
+    .then((res) => res.json())
+    .then((courses) => {
+      if (Array.isArray(courses) && courses.length > 0) {
+        container.innerHTML = ""; // clear any existing content
+
+        courses.forEach((course) => {
+          const courseCard = document.createElement("div");
+          courseCard.className = "course-card";
+          courseCard.innerHTML = `
+            <h2>${course.title}</h2>
+            <p><strong>Description:</strong> ${course.description}</p>
+          `;
+          container.appendChild(courseCard);
+        });
+      } else {
+        container.innerHTML = "<p>No courses found.</p>";
+      }
+    })
+    .catch((err) => {
+      console.error("Error loading courses:", err);
+      container.innerHTML = "<p>Error fetching courses. Try again later.</p>";
+    });
+});
+
+</script>
+
+
+<script src="../js/faculty-dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Chat Toggle Button -->
+<button id="toggleChatButton" class="chat-toggle-button">💬</button>
+
+<!-- Chat Container -->
+<div id="chat-container" class="chat-container" style="display: none;">
+  <div id="chat-window" class="chat-window"></div>
+  <div class="chatbot-footer">
+    <input type="text" id="chatInput" placeholder="Type a message..." />
+    <button id="sendBtn">➤</button>
+  </div>
+</div>
+
+<script>
+  const sidebar = document.querySelector(".sidebar");
+  const dashboard = document.querySelector(".dashboard");
+  const toggleLogo = document.querySelector(".title"); // EduCrypt
+
+  toggleLogo.addEventListener("click", () => {
+    sidebar.classList.toggle("collapsed");
+    dashboard.classList.toggle("collapsed");
+  });
+</script>
+
+<script>
+  const expectedRole = "faculty"; // or "student"
+  const actualRole = localStorage.getItem("userRole");
+
+  if (actualRole !== expectedRole) {
+    console.warn("🧽 Clearing mismatched localStorage...");
+    localStorage.clear();
+    window.location.href = expectedRole === "faculty" ? "faculty-login.html" : "student-login.html";
+  }
+</script>
+</body>
+</html>

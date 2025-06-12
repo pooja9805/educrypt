@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Assignment | EduCrypt</title>
+  <link rel="stylesheet" href="../css/assignment.css" />
+</head>
+<body>
+  <header class="assignment-header">
+    <div class="logo-title">
+      <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />
+      <h1 class="animated-title">EduCrypt</h1>
+    </div>
+  </header>
+
+  <main class="assignment-container">
+    <h2 id="assignment-title">Loading Assignment...</h2>
+    <p id="assignment-desc"></p>
+    <p><strong>Uploaded On:</strong> <span id="uploaded-at"></span></p>
+    <p><strong>Due Date:</strong> <span id="due-date"></span></p>
+
+    <iframe id="assignment-file-preview" src="" frameborder="0" class="file-preview"></iframe>
+
+    <form id="upload-assignment-form" enctype="multipart/form-data">
+      <label>Upload Your Solution:</label>
+      <input type="file" name="solution" accept=".pdf,.docx,.ppt,.txt" required />
+      
+      <label>Encryption Key:</label>
+      <input type="password" name="encryptionKey" placeholder="Enter encryption password" required />
+
+      <button type="submit">Upload Assignment</button>
+      <p id="upload-status" class="status-msg"></p>
+    </form>
+  </main>
+
+  <script src="../js/assignment.js"></script>
+</body>
+</html>

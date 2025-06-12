@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduCrypt - Notes & To-Do</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/notes.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>EduCrypt</h2>
+      <ul>
+        <li id="nav-notes" class="active">Notes</li>
+        <li id="nav-todos">To-Do List</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- Notes Section -->
+      <section id="notesSection" class="section visible">
+        <h1>My Notes</h1>
+        <form id="noteForm">
+          <input type="text" id="noteTitle" placeholder="Enter Note Title..." required />
+          <textarea id="noteContent" rows="5" placeholder="Write your note here..."></textarea>
+          <button type="submit">Save Note</button>
+        </form>
+        <h2>My Notes</h2>
+        <div id="notesList" class="item-list"></div>
+      </section>
+
+      <!-- To-Do Section -->
+      <section id="todoSection" class="section">
+        <h1>To-Do List</h1>
+        <form id="todoForm">
+          <input type="text" id="todoTitle" placeholder="To-Do List Title..." required />
+          <div id="taskContainer"></div>
+          <button type="button" id="addTask">+ Add Task</button>
+          <button type="submit">Save To-Do</button>
+        </form>
+        <h2>My To-Do Lists</h2>
+        <div id="todosList" class="item-list"></div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/notes.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Registration | EduCrypt</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body class="register-body">
+  <header>
+    <div class="logo-container">
+        <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />     
+      <span>EduCrypt</span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="auth-section">
+    <div class="auth-container">
+      <h2 class="auth-heading">Faculty Registration</h2>
+      <form id="facultyRegisterForm" class="auth-form">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" id="firstName" required />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" id="lastName" required />
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="regUsername" required />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" required />
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="confirmPassword" required />
+        </div>
+        <p id="facultyRegisterError" class="error-text"></p>
+        <button type="submit" class="auth-btn">Register</button>
+        <p class="switch-link">Already have an account? <a href="faculty-login.html">Login here</a></p>
+      </form>
+    </div>
+  </section>
+
+
+
+  <script src="../js/faculty.js"></script>
+</body>
+</html>

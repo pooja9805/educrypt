@@ -1,0 +1,101 @@
+
+/* ==========================
+   EduCrypt Upload Assignment Page Styles
+   ========================== */
+
+   body {
+    background-color: #0d0d1d;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #0d0d1d;
+    padding: 16px 32px;
+    border-bottom: 1px solid #00d8ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    color: #00d8ff;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  
+  header nav a:hover {
+    color: #00d8ff;
+  }
+  
+  main {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #111111;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #00d8ff;
+    box-shadow: 0 0 15px rgba(0, 216, 255, 0.1);
+  }
+  
+  main h2 {
+    text-align: center;
+    color: #00d8ff;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  input[type="file"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    border: 1px solid #444;
+    margin-bottom: 16px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #00d8ff;
+    color: #000000;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #00bcd4;
+  }
+  
+  #statusMessage {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  #submissionFileViewer {
+    padding: 1rem;
+    border: 1px solid #00d8ff;
+    margin-top: 10px;
+    background-color: #111;
+    color: white;
+  }
+  

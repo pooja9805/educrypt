@@ -1,0 +1,136 @@
+body {
+  background-color: #07081a;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0a0b23;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #00d8ff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  color: #00d8ff;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.top-nav a {
+  margin-left: 1.5rem;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.top-nav a:hover {
+  color: #00d8ff;
+}
+
+.course-section h1,
+.course-section h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.course-section p,
+.course-section ul {
+  font-size: 1rem;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input,
+textarea,
+select {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none;
+}
+
+.section-block {
+  background-color: #111111;
+  border: 1px solid #00d8ff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 2rem;
+}
+
+.section-block h2 {
+  font-size: 1.5rem;
+  color: #00d8ff;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-block ul {
+  padding-left: 1rem;
+}
+
+.section-block p {
+  color: #ccc;
+}
+
+.content-block {
+  background-color: #111111;
+  border: 1px solid #00d8ff;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 8px #00d8ff44;
+  color: white;
+}
+
+.content-block h3 {
+  color: #00d8ff;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.content-block p {
+  color: #ccc;
+}
+
+.content-block a {
+  color: #00d8ff;
+  text-decoration: underline;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.content-block button {
+  margin-top: 0.5rem;
+  background-color: #00d8ff;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

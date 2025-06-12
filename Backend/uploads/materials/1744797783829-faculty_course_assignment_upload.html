@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Faculty Course Management</title>
+  <link rel="stylesheet" href="main.css"/>
+</head>
+<body>
+
+<div class="container">
+  <div class="course-header">
+    <h2 id="course-name">Course Name</h2>
+    <p id="course-description">Course description will appear here.</p>
+  </div>
+
+  <div class="card-section">
+    <h3>Upload Assignment</h3>
+    <form id="assignment-upload-form">
+      <label for="assignment-title">Title:</label>
+      <input type="text" id="assignment-title" name="title" required />
+
+      <label for="assignment-file">Choose File:</label>
+      <input type="file" id="assignment-file" name="file" required />
+
+      <label for="due-date">Due Date:</label>
+      <input type="date" id="due-date" name="dueDate" required />
+
+      <label for="description">Description (optional):</label>
+      <textarea id="description" name="description" placeholder="Add notes..."></textarea>
+
+      <button type="submit">Upload Assignment</button>
+    </form>
+    <div id="upload-response"></div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('assignment-upload-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData();
+    formData.append("title", form.title.value);
+    formData.append("file", form.file.files[0]);
+    formData.append("dueDate", form.dueDate.value);
+    formData.append("description", form.description.value);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/assignments/upload", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        document.getElementById("upload-response").innerText = "✅ Assignment uploaded successfully!";
+        form.reset();
+      } else {
+        document.getElementById("upload-response").innerText = "❌ Failed to upload: " + result.message;
+      }
+    } catch (error) {
+      document.getElementById("upload-response").innerText = "❌ Error uploading assignment.";
+    }
+  });
+</script>
+
+</body>
+</html>

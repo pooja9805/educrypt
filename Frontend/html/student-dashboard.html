@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduCrypt - Student Dashboard</title>
+  <link rel="stylesheet" href="../css/chatbot.css">
+  <link rel="stylesheet" href="../css/student-dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .notification-bell {
+      position: relative;
+      font-size: 18px;
+      color: #00ffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .notification-bell i {
+      color: #00ffff;
+    }
+
+    .notification-badge {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #ff4b5c;
+      color: white;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 50%;
+    }
+
+    .notification-dropdown {
+      position: absolute;
+      top: 30px;
+      right: 0;
+      width: 250px;
+      background-color: #0a0f2c;
+      color: white;
+      border: 1px solid #00ffff33;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.1);
+      display: none;
+      z-index: 999;
+      padding: 10px;
+    }
+
+    .notification-bell:hover .notification-dropdown {
+      display: block;
+    }
+    .sidebar-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-profile img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #00d8ff;
+  margin-bottom: 0.5rem;
+}
+.sidebar {
+  background-color: #0a0b23;
+  padding: 1rem;
+}
+
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="logo" id="openSidebar">
+      <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />
+      <span class="logo-text">EduCrypt</span>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search Courses...">
+      <i class="fas fa-search"></i>
+    </div>
+    <nav class="top-nav">
+      <!-- Notification comes first here -->
+      <div class="notification-bell" id="notifBell">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notifCount">0</span>
+        <div class="notification-dropdown" id="notificationList">
+          <!-- Notifications will be populated here -->
+        </div>
+      </div>
+
+      <a href="../html/index.html">Home</a>
+      <a href="../html/features.html">Features</a>
+      <a href="../html/about.html">About</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-profile">
+      <img src="../assets/default-profile.png" alt="Profile" />
+      <h3 id="studentName">Student Name</h3>
+    </div>
+    <ul>
+      <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+      <li><a href="notes.html"><i class="fas fa-sticky-note"></i> Notes</a></li>
+      <li><a href="compiler.html"><i class="fas fa-code"></i> Compiler</a></li>
+      <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+    </ul>
+  </aside>
+
+  <!-- COURSES CONTAINER -->
+  <main class="content">
+    <h2>Enrolled Courses</h2>
+    <div class="courses-grid" id="coursesContainer">
+      <!-- Courses will be dynamically inserted -->
+    </div>
+  </main>
+
+
+
+<!-- ✅ Chatbot Footer -->
+<footer class="chatbot-footer">
+  <div class="chat-controls">
+    <input id="chatInput" type="text" placeholder="Ask EduCrypt AI..." />
+    <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+  </div>
+  <div id="chatResponse" class="chat-response"></div>
+</footer>
+
+<!-- ✅ JS scripts -->
+<script>
+  const chatInput = document.getElementById("chatInput");
+  const sendBtn = document.getElementById("sendBtn");
+  const chatResponse = document.getElementById("chatResponse");
+  const token = localStorage.getItem("token");
+
+  sendBtn.addEventListener("click", async () => {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    // Show user message
+    const userMsg = document.createElement("div");
+    userMsg.className = "chat-bubble user";
+    userMsg.textContent = message;
+    chatResponse.appendChild(userMsg);
+
+    // Loading bot message
+    const botMsg = document.createElement("div");
+    botMsg.className = "chat-bubble bot";
+    botMsg.textContent = "🤖 Typing...";
+    chatResponse.appendChild(botMsg);
+    chatResponse.scrollTop = chatResponse.scrollHeight;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/chat/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await res.json();
+
+      // Replace bot message with response
+      botMsg.innerHTML = (data.reply || "⚠️ AI didn’t respond.").replace(/```(.*?)```/gs, (_, code) => {
+        return `<pre><code>${code}</code></pre>`;
+      }).replace(/<span class="comment">(.*?)<\/span>/g, '<span style="color:#00ff00;font-style:italic;">//$1</span>');
+    } catch (error) {
+      botMsg.textContent = "❌ Error: AI unavailable.";
+      console.error("Chatbot Error:", error);
+    }
+
+    chatInput.value = "";
+    chatResponse.scrollTop = chatResponse.scrollHeight;
+  });
+</script>
+
+<script src="../js/student-dashboard.js"></script>
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0a0a1a;
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
+  
+  .notion-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #00f2fe;
+  }
+  
+  .note-toolbar {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .note-toolbar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #00f2fe;
+    background: #111;
+    color: white;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 300px;
+    margin-top: 15px;
+    padding: 15px;
+    background: #111;
+    border: 1px solid #00f2fe;
+    color: white;
+  }
+  
+  .note-actions {
+    margin-top: 15px;
+  }
+  
+  .note-actions button {
+    background: #00f2fe;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .note-sidebar {
+    margin-top: 30px;
+  }
+  
+  .note-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .note-sidebar li {
+    background: #1a1a2e;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-left: 3px solid #00f2fe;
+    cursor: pointer;
+  }
+  

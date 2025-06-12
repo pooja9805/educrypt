@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes & To-Do List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+    body {
+      background-color: #07081a;
+      color: white;
+      font-family: 'Roboto Mono', monospace;
+    }
+    .task-done {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+  <nav class="w-48 bg-[#0a0b23] flex flex-col p-6 space-y-6">
+    <button id="btnNotes" class="text-[#00d8ff] font-extrabold text-lg text-left hover:text-[#33e6ff] focus:outline-none">Notes</button>
+    <button id="btnTodo" class="text-gray-400 font-extrabold text-lg text-left hover:text-[#33e6ff] focus:outline-none">To-Do List</button>
+  </nav>
+
+  <main class="flex-1 p-10 overflow-y-auto max-h-screen">
+    <!-- Content will be handled by JS -->
+    <div id="appRoot"></div>
+  </main>
+
+  <script>
+    // Client logic will be inserted dynamically by Python in next step
+  </script>
+</body>
+</html>
+
+<script>
+const userId = localStorage.getItem("userId");
+const token = localStorage.getItem("token");
+const userType = localStorage.getItem("role");
+const apiBase = "http://localhost:5000/api";
+
+if (!userId || !token || !userType) {
+  alert("Authentication error. Please log in again.");
+  window.location.href = "faculty-login.html";
+}
+
+// Global DOM containers
+const appRoot = document.getElementById("appRoot");
+
+// UI structure
+appRoot.innerHTML = `
+  <section id="notesSection" class="">
+    <h1 class="text-3xl font-extrabold text-[#00d8ff]">My Notes</h1>
+    <form id="noteForm" class="space-y-4 max-w-5xl mt-4">
+      <input id="noteTitle" type="text" placeholder="Note Title" required class="w-full px-4 py-2 bg-transparent border border-[#00d8ff] text-white" />
+      <textarea id="noteContent" placeholder="Write your note..." required class="w-full min-h-[150px] px-4 py-2 bg-[#111] border border-[#00d8ff] text-white"></textarea>
+      <button type="submit" class="bg-white text-black px-4 py-2 font-bold">Save</button>
+    </form>
+    <div id="notesList" class="mt-6 space-y-4"></div>
+  </section>
+
+  <section id="todoSection" class="hidden">
+    <h1 class="text-3xl font-extrabold text-[#00d8ff]">To-Do List</h1>
+    <form id="todoForm" class="space-y-4 max-w-5xl mt-4">
+      <input id="todoTitle" type="text" placeholder="To-Do List Title" required class="w-full px-4 py-2 bg-transparent border border-[#00d8ff] text-white" />
+      <button type="submit" class="bg-white text-black px-4 py-2 font-bold">Create List</button>
+    </form>
+    <div id="todosList" class="mt-6 space-y-4"></div>
+  </section>
+`;
+
+const btnNotes = document.getElementById("btnNotes");
+const btnTodo = document.getElementById("btnTodo");
+const notesSection = document.getElementById("notesSection");
+const todoSection = document.getElementById("todoSection");
+
+btnNotes.addEventListener("click", () => {
+  notesSection.classList.remove("hidden");
+  todoSection.classList.add("hidden");
+  btnNotes.classList.add("text-[#00d8ff]");
+  btnTodo.classList.remove("text-[#00d8ff]");
+});
+btnTodo.addEventListener("click", () => {
+  todoSection.classList.remove("hidden");
+  notesSection.classList.add("hidden");
+  btnTodo.classList.add("text-[#00d8ff]");
+  btnNotes.classList.remove("text-[#00d8ff]");
+});
+
+// Notes logic
+const noteForm = document.getElementById("noteForm");
+const noteTitle = document.getElementById("noteTitle");
+const noteContent = document.getElementById("noteContent");
+const notesList = document.getElementById("notesList");
+
+let editingNoteId = null;
+
+noteForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = {
+    userId, userType,
+    title: noteTitle.value.trim(),
+    content: noteContent.value.trim()
+  };
+  try {
+    if (editingNoteId) {
+      await fetch(\`\${apiBase}/notes/\${editingNoteId}\`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", Authorization: \`Bearer \${token}\` },
+        body: JSON.stringify(data)
+      });
+    } else {
+      await fetch(\`\${apiBase}/notes\`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: \`Bearer \${token}\` },
+        body: JSON.stringify(data)
+      });
+    }
+    noteForm.reset();
+    editingNoteId = null;
+    loadNotes();
+  } catch {
+    alert("Note save error");
+  }
+});
+
+async function loadNotes() {
+  const res = await fetch(\`\${apiBase}/notes/\${userId}\`, {
+    headers: { Authorization: \`Bearer \${token}\` }
+  });
+  const notes = await res.json();
+  notesList.innerHTML = "";
+  notes.forEach(note => {
+    const div = document.createElement("div");
+    div.className = "border border-[#00d8ff] p-4 bg-[#111]";
+    div.innerHTML = \`
+      <div class="flex justify-between items-center mb-2">
+        <h3 class="font-bold text-[#00d8ff] cursor-pointer">\${note.title}</h3>
+        <span class="text-sm text-gray-400">\${new Date(note.updatedAt).toLocaleString()}</span>
+      </div>
+      <p class="text-gray-300 mb-3">\${note.content}</p>
+      <button class="bg-[#00d8ff] text-black font-bold px-3 py-1 editNote">Edit</button>
+      <button class="bg-red-600 text-white font-bold px-3 py-1 ml-2 deleteNote">Delete</button>
+    \`;
+    div.querySelector(".editNote").onclick = () => {
+      editingNoteId = note._id;
+      noteTitle.value = note.title;
+      noteContent.value = note.content;
+    };
+    div.querySelector(".deleteNote").onclick = async () => {
+      await fetch(\`\${apiBase}/notes/\${note._id}\`, {
+        method: "DELETE",
+        headers: { Authorization: \`Bearer \${token}\` }
+      });
+      loadNotes();
+    };
+    notesList.appendChild(div);
+  });
+}
+loadNotes();
+
+// To-Do logic
+const todoForm = document.getElementById("todoForm");
+const todoTitle = document.getElementById("todoTitle");
+const todosList = document.getElementById("todosList");
+
+let todos = [];
+
+todoForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = {
+    userId, userType,
+    task: todoTitle.value.trim(),
+    dueDate: new Date(Date.now() + 86400000),
+    completed: false
+  };
+  const res = await fetch(\`\${apiBase}/notes/todo\`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Authorization: \`Bearer \${token}\` },
+    body: JSON.stringify(data)
+  });
+  const todo = await res.json();
+  renderTodo(todo);
+  todoForm.reset();
+});
+
+async function loadTodos() {
+  const res = await fetch(\`\${apiBase}/notes/todo/\${userId}\`, {
+    headers: { Authorization: \`Bearer \${token}\` }
+  });
+  todos = await res.json();
+  todosList.innerHTML = "";
+  todos.forEach(todo => renderTodo(todo));
+}
+
+function renderTodo(todo) {
+  const div = document.createElement("div");
+  div.className = "border border-[#00d8ff] p-4 bg-[#111] mt-2";
+
+  const taskInput = document.createElement("input");
+  taskInput.type = "text";
+  taskInput.placeholder = "New task...";
+  taskInput.className = "w-full px-2 py-1 bg-transparent border border-[#00d8ff] text-white mb-2";
+
+  const addTaskBtn = document.createElement("button");
+  addTaskBtn.textContent = "Add Task";
+  addTaskBtn.className = "bg-[#00d8ff] text-black font-bold px-3 py-1 mb-2";
+
+  const taskList = document.createElement("div");
+  let tasks = [];
+
+  addTaskBtn.onclick = async () => {
+    const text = taskInput.value.trim();
+    if (!text) return;
+    tasks.push({ text, done: false });
+    await updateTodo(todo._id, tasks);
+    taskInput.value = '';
+    loadTodos();
+  };
+
+  div.innerHTML = \`
+    <div class="flex justify-between items-center mb-2">
+      <h3 class="font-bold text-[#00d8ff]">\${todo.task}</h3>
+      <span class="text-sm text-gray-400">\${new Date(todo.dueDate).toLocaleString()}</span>
+    </div>
+  \`;
+  div.appendChild(taskInput);
+  div.appendChild(addTaskBtn);
+  div.appendChild(taskList);
+  todosList.appendChild(div);
+}
+
+async function updateTodo(id, tasks) {
+  await fetch(\`\${apiBase}/notes/todo/\${id}\`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: \`Bearer \${token}\`
+    },
+    body: JSON.stringify({ userId, userType, content: JSON.stringify(tasks) })
+  });
+}
+
+loadTodos();
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encrypted Assignment Upload</title>
+</head>
+<body>
+  <h2>Student Encrypted Assignment Upload</h2>
+
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label>Select Assignment File:</label><br />
+    <input type="file" name="file" required /><br /><br />
+
+    <label>Course ID:</label><br />
+    <input type="text" name="courseId" required /><br /><br />
+
+    <label>Assignment ID:</label><br />
+    <input type="text" name="assignmentId" required /><br /><br />
+
+    <label>Password for Encryption:</label><br />
+    <input type="password" name="password" required /><br /><br />
+
+    <button type="submit">Upload & Encrypt</button>
+  </form>
+
+  <pre id="responseBox"></pre>
+
+  <script>
+    const form = document.getElementById("uploadForm");
+    const responseBox = document.getElementById("responseBox");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      responseBox.textContent = "Uploading... 🔐";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("http://localhost:5000/api/submissions/upload", {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZWQ4ZDYxMmMwNDQ0NjlmM2E3N2Y1MiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQzNjIxNDg0LCJleHAiOjE3NDM3MDc4ODR9.SnFhtTcpzysbHDf7Fv0qx9uQwIGc96lj0rN7JHKdBGE" // Replace with real token
+          },
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          responseBox.textContent = "✅ Success:\n" + JSON.stringify(result, null, 2);
+        } else {
+          responseBox.textContent = "❌ Error:\n" + JSON.stringify(result, null, 2);
+        }
+      } catch (err) {
+        responseBox.textContent = "🚨 Network Error: " + err.message;
+        console.error("Upload failed:", err);
+      }
+    });
+  </script>
+</body>
+</html>

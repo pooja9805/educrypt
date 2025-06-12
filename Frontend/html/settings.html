@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EduCrypt - Settings</title>
+  <link rel="stylesheet" href="../css/settings.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="../assets/educrypt-logo.png" alt="EduCrypt Logo" style="height: 45px; margin-right: 10px;" />
+      <h1 class="animated-title">EduCrypt</h1>
+    </div>
+    <nav>
+      <a href="../html/index.html">Home</a>
+      <a href="../html/features.html">Features</a>
+      <a href="../html/about.html">About</a>
+      <div class="logout-menu">
+        <button class="logout-btn" onclick="toggleLogout()">⚙️ Log Out ▾</button>
+        <div id="logoutOptions" class="logout-options">
+          <a href="#">Log out as Student</a>
+          <a href="#">Switch Account</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="settings-container">
+    <h2>⚙️ Account Settings</h2>
+
+    <div class="form-group">
+      <label for="profilePic">Profile Picture:</label>
+      <input type="file" id="profilePic" />
+    </div>
+
+    <div class="form-group">
+      <label for="editName">Full Name:</label>
+      <input type="text" id="editName" placeholder="Enter your name" />
+    </div>
+
+    <div class="form-group">
+      <label for="editEmail">Email:</label>
+      <input type="email" id="editEmail" placeholder="you@email.com" />
+    </div>
+
+    <button class="save-btn" onclick="saveSettings()">💾 Save Changes</button>
+
+    <hr />
+
+    <h3>🔐 Request Access to a Course</h3>
+    <div class="form-group">
+      <label for="requestCourse">Course Name:</label>
+      <input type="text" id="requestCourse" placeholder="e.g., Advanced AI" />
+    </div>
+    <div class="form-group">
+      <label for="requestMessage">Message (Optional):</label>
+      <textarea id="requestMessage" placeholder="Why do you want access?"></textarea>
+    </div>
+    <button class="send-request-btn" onclick="sendCourseRequest()">📨 Send Request</button>
+  </main>
+
+  <script src="../js/settings.js"></script>
+</body>
+</html>

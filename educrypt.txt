@@ -1,0 +1,791 @@
+Token for Shaunak Jani:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjY3NDliMGNmMDRlNGE0NzY1ZGI3YSIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0MjMwOTQwLCJleHAiOjE3NDQ4MzU3NDB9.Rs42ylKLANZQwWaESR-PlORVGkbmxHOj1nfTSrEetBQ
+
+Token for course:
+67f6e2283886e337d04039aa
+
+Username and password:
+Username: pooja bagul
+Password: 386e4818
+
+Token for Pooja Bagul:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjZlMmY0Mzg4NmUzMzdkMDQwMzlhZCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzQ0MjMzMzAwLCJleHAiOjE3NDQ4MzgxMDB9.H4bnR43OThDmqWR2-Apsx6T-zC1I2jt5wD5Yci8VKng
+
+Token for notes:
+67f6f0852b0c381b47268407
+
+Google client ID: 497602304451-4oi39375m8dthnpkruqf15hh4d980s07.apps.googleusercontent.com
+Client Secret: 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
+
+
+Gemini API: AIzaSyCyTEtvjMQ_FeRCigdmtTBYlWN0nYvkoN0
+
+
+Gmail Educrypt password: jrxg onke rrmb mzbm
+rows = 5  # You can change this value for a bigger triangle
+
+for i in range(rows, 0, -1):
+    print('*' * i)
+
+Vishal Narvani:
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmE0NDQwMGM4ZDEzMjZiZGRkZWMwYyIsInJvbGUiOiJmYWN1bHR5IiwiaWF0IjoxNzQ0NDU0NzQyLCJleHAiOjE3NDUwNTk1NDJ9.Z-ngpmjPGhGSeIJ6QHj5A-S5bUpquwpVEMzjIKNzgzk
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notes & To-Do List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+  </style>
+</head>
+<body class="bg-[#07081a] text-white font-sans h-screen flex overflow-hidden">
+  <!-- Sidebar -->
+  <nav class="w-48 bg-[#0a0b23] flex flex-col p-6 space-y-6">
+    <button id="btnNotes" class="text-[#00d8ff] font-extrabold text-lg text-left hover:text-[#33e6ff] focus:outline-none">
+      Notes
+    </button>
+    <button id="btnTodo" class="text-gray-400 font-extrabold text-lg text-left hover:text-[#33e6ff] focus:outline-none">
+      To-Do List
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-10 overflow-y-auto max-h-screen">
+    <!-- Notes Section -->
+    <section id="notesSection" class="space-y-6">
+      <h1 class="text-3xl font-extrabold text-[#00d8ff]">My Notes</h1>
+      <form id="noteForm" class="space-y-4 max-w-5xl">
+        <div class="flex gap-4 items-center">
+          <input
+            id="noteTitle"
+            type="text"
+            placeholder="Title..."
+            class="flex-grow border border-[#00d8ff] bg-transparent text-gray-400 px-4 py-2 focus:outline-none"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-white text-black px-4 py-2 font-normal"
+            title="Save Note"
+          >
+            Save
+          </button>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="flex flex-wrap gap-3 text-gray-400" id="toolbar">
+          <button type="button" data-command="bold" title="Bold" class="hover:text-[#00d8ff]"><i class="fas fa-bold"></i></button>
+          <button type="button" data-command="italic" title="Italic" class="hover:text-[#00d8ff]"><i class="fas fa-italic"></i></button>
+          <button type="button" data-command="underline" title="Underline" class="hover:text-[#00d8ff]"><i class="fas fa-underline"></i></button>
+
+          <select id="fontName" title="Font Family" class="bg-transparent border border-[#00d8ff] text-gray-400 px-2 py-1 rounded">
+            <option value="Arial" selected>Arial</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Tahoma">Tahoma</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+
+          <select id="fontSize" title="Font Size" class="bg-transparent border border-[#00d8ff] text-gray-400 px-2 py-1 rounded">
+            <option value="1">8pt</option>
+            <option value="2">10pt</option>
+            <option value="3" selected>12pt</option>
+            <option value="4">14pt</option>
+            <option value="5">18pt</option>
+            <option value="6">24pt</option>
+            <option value="7">36pt</option>
+          </select>
+
+          <button type="button" data-command="justifyLeft" title="Align Left" class="hover:text-[#00d8ff]"><i class="fas fa-align-left"></i></button>
+          <button type="button" data-command="justifyCenter" title="Align Center" class="hover:text-[#00d8ff]"><i class="fas fa-align-center"></i></button>
+          <button type="button" data-command="justifyRight" title="Align Right" class="hover:text-[#00d8ff]"><i class="fas fa-align-right"></i></button>
+          <button type="button" data-command="justifyFull" title="Justify" class="hover:text-[#00d8ff]"><i class="fas fa-align-justify"></i></button>
+
+          <input type="color" id="foreColor" title="Text Color" class="w-8 h-8 p-0 border-none cursor-pointer" />
+          <input type="color" id="hiliteColor" title="Highlight Color" class="w-8 h-8 p-0 border-none cursor-pointer" />
+        </div>
+
+        <!-- Editable content area -->
+        <div
+          id="noteContent"
+          contenteditable="true"
+          spellcheck="true"
+          class="w-full border border-[#00d8ff] bg-[#111111] text-gray-400 font-['Roboto_Mono'] px-4 py-3 min-h-[200px] max-h-[400px] overflow-y-auto resize"
+          aria-label="Note content editor"
+        ></div>
+      </form>
+
+      <!-- Saved Notes List -->
+      <section id="savedNotes" class="max-w-5xl space-y-4 mt-10">
+        <h2 class="text-white font-extrabold text-lg">My Notes</h2>
+        <div id="notesList" class="space-y-4"></div>
+      </section>
+    </section>
+
+    <!-- To-Do Section -->
+    <section id="todoSection" class="hidden space-y-6 max-w-5xl">
+      <h1 class="text-3xl font-extrabold text-[#00d8ff]">To-Do List</h1>
+      <form id="todoForm" class="space-y-4 max-w-3xl">
+        <div class="flex gap-4 items-center">
+          <input
+            id="todoTitle"
+            type="text"
+            placeholder="To-Do List Title..."
+            class="flex-grow border border-[#00d8ff] bg-transparent text-gray-400 px-4 py-2 focus:outline-none"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-white text-black px-4 py-2 font-normal"
+            title="Save To-Do List"
+          >
+            Save
+          </button>
+        </div>
+      
+        <div id="taskContainer" class="space-y-2 mt-4">
+          <!-- Task inputs will be added here -->
+        </div>
+      
+        <button
+          type="button"
+          id="addTaskBtn"
+          class="bg-[#00d8ff] text-black px-4 py-2 font-bold mt-2"
+        >
+          + Add Task
+        </button>
+      </form>
+      
+
+      <!-- Saved To-Do Lists -->
+      <section id="savedTodos" class="space-y-6 mt-10 max-w-5xl">
+        <h2 class="text-white font-extrabold text-lg">My To-Do Lists</h2>
+        <div id="todosList" class="space-y-4"></div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+      // ✅ STEP 0: Get stored values from localStorage
+     const userId = localStorage.getItem("userId");
+     const token = localStorage.getItem("token");
+     const userType = localStorage.getItem("role");
+    // User info and API config
+    const apiBase = "http://localhost:5000/api";
+
+    console.log("✅ USER ID:", userId);
+    console.log("✅ TOKEN:", token);
+    console.log("✅ ROLE:", userType);
+    console.log("ROLE:", userRole);
+    
+    // Sidebar buttons
+    const btnNotes = document.getElementById('btnNotes');
+    const btnTodo = document.getElementById('btnTodo');
+    const notesSection = document.getElementById('notesSection');
+    const todoSection = document.getElementById('todoSection');
+
+    btnNotes.addEventListener('click', () => {
+      notesSection.classList.remove('hidden');
+      todoSection.classList.add('hidden');
+      btnNotes.classList.add('text-[#00d8ff]');
+      btnNotes.classList.remove('text-gray-400');
+      btnTodo.classList.remove('text-[#00d8ff]');
+      btnTodo.classList.add('text-gray-400');
+    });
+
+    btnTodo.addEventListener('click', () => {
+      todoSection.classList.remove('hidden');
+      notesSection.classList.add('hidden');
+      btnTodo.classList.add('text-[#00d8ff]');
+      btnTodo.classList.remove('text-gray-400');
+      btnNotes.classList.remove('text-[#00d8ff]');
+      btnNotes.classList.add('text-gray-400');
+    });
+
+    // Rich text editor commands for notes
+    const toolbar = document.getElementById('toolbar');
+    const noteContent = document.getElementById('noteContent');
+    const fontName = document.getElementById('fontName');
+    const fontSize = document.getElementById('fontSize');
+    const foreColor = document.getElementById('foreColor');
+    const hiliteColor = document.getElementById('hiliteColor');
+
+    toolbar.addEventListener('click', (e) => {
+      if (e.target.closest('button')) {
+        const button = e.target.closest('button');
+        const command = button.dataset.command;
+        if (command) {
+          document.execCommand(command, false, null);
+          noteContent.focus();
+        }
+      }
+    });
+
+    fontName.addEventListener('change', () => {
+      document.execCommand('fontName', false, fontName.value);
+      noteContent.focus();
+    });
+
+    fontSize.addEventListener('change', () => {
+      document.execCommand('fontSize', false, fontSize.value);
+      noteContent.focus();
+    });
+
+    foreColor.addEventListener('change', () => {
+      document.execCommand('foreColor', false, foreColor.value);
+      noteContent.focus();
+    });
+
+    hiliteColor.addEventListener('change', () => {
+      document.execCommand('hiliteColor', false, hiliteColor.value);
+      noteContent.focus();
+    });
+
+    // Notes saving, updating, deleting, fetching
+    const noteForm = document.getElementById('noteForm');
+    const noteTitle = document.getElementById('noteTitle');
+    const notesList = document.getElementById('notesList');
+
+    let notes = [];
+    let editingNoteId = null;
+
+    async function fetchNotes() {
+      try {
+        const res = await fetch(`${apiBase}/notes/${userId}`, {
+          headers: { Authorization: `Bearer ${token}`,
+            "x-usertype": userType
+           }
+        });
+        if (!res.ok) throw new Error("Failed to fetch notes");
+        notes = await res.json();
+        renderNotes();
+      } catch (err) {
+        console.error(err);
+        notesList.innerHTML = '<p class="text-gray-400">Failed to load notes.</p>';
+      }
+    }
+
+    async function saveNote(note) {
+      try {
+        const res = await fetch(`${apiBase}/notes`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, 
+          },
+          body: JSON.stringify(note)
+        });
+        if (!res.ok) throw new Error("Failed to save note");
+        return await res.json();
+      } catch (err) {
+        alert("Error saving note");
+        throw err;
+      }
+    }
+
+    async function updateNote(id, note) {
+      try {
+        const res = await fetch(`${apiBase}/notes/${id}`, {
+          method: "PUT",
+          headers: {
+           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, 
+          },
+          body: JSON.stringify(note)
+        });
+        if (!res.ok) throw new Error("Failed to update note");
+        return await res.json();
+      } catch (err) {
+        alert("Error updating note");
+        throw err;
+      }
+    }
+
+    async function deleteNote(id) {
+      try {
+        const res = await fetch(`${apiBase}/notes/${id}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}`}
+        });
+        if (!res.ok) throw new Error("Failed to delete note");
+      } catch (err) {
+        alert("Error deleting note");
+        throw err;
+      }
+    }
+
+    noteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!noteTitle.value.trim()) return;
+
+      const contentHTML = noteContent.innerHTML.trim();
+      if (!contentHTML) return;
+
+      const noteData = {
+        userId,
+        userType,
+        title: noteTitle.value.trim(),
+        content: contentHTML
+      };
+
+      try {
+        if (editingNoteId) {
+          await updateNote(editingNoteId, noteData);
+          editingNoteId = null;
+        } else {
+          await saveNote(noteData);
+        }
+        noteForm.reset();
+        noteContent.innerHTML = '';
+        await fetchNotes();
+      } catch {
+        // error handled in functions
+      }
+    });
+
+    function renderNotes() {
+      notesList.innerHTML = '';
+      if (!notes.length) {
+        notesList.innerHTML = '<p class="text-gray-400">No notes saved yet.</p>';
+        return;
+      }
+      notes.forEach((note) => {
+        const date = new Date(note.updatedAt || note.createdAt || note.datetime || Date.now());
+        const formattedDate = date.toLocaleString();
+
+        const noteDiv = document.createElement('div');
+        noteDiv.className = 'border border-[#00d8ff] p-4 rounded bg-[#111111]';
+
+        const titleRow = document.createElement('div');
+        titleRow.className = 'flex justify-between items-center mb-2';
+
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'font-extrabold text-[#00d8ff] text-lg cursor-pointer';
+        titleEl.textContent = note.title;
+        titleEl.title = "Click to edit";
+        titleEl.addEventListener('click', () => {
+          editingNoteId = note._id || note.id;
+          noteTitle.value = note.title;
+          noteContent.innerHTML = note.content;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const dateEl = document.createElement('span');
+        dateEl.className = 'text-gray-400 text-sm';
+        dateEl.textContent = formattedDate;
+
+        titleRow.appendChild(titleEl);
+        titleRow.appendChild(dateEl);
+
+        const contentEl = document.createElement('div');
+        contentEl.className = 'text-gray-300 mb-3 overflow-auto max-h-40';
+        contentEl.innerHTML = note.content;
+
+        const btnsRow = document.createElement('div');
+        btnsRow.className = 'flex gap-3';
+
+        const shareBtn = document.createElement('button');
+        shareBtn.className = 'bg-[#00d8ff] text-black font-extrabold px-4 py-1';
+        shareBtn.textContent = 'Share';
+        shareBtn.title = 'Copy shareable link';
+        shareBtn.addEventListener('click', () => {
+          const url = new URL(window.location.href);
+          url.searchParams.set('note', note._id || note.id);
+          navigator.clipboard.writeText(url.toString()).then(() => {
+            alert('Link copied to clipboard!');
+          });
+        });
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'bg-red-600 text-white font-extrabold px-4 py-1';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.title = 'Delete note';
+        deleteBtn.addEventListener('click', async () => {
+          if (confirm('Are you sure you want to delete this note?')) {
+            try {
+              await deleteNote(note._id || note.id);
+              await fetchNotes();
+              if (editingNoteId === (note._id || note.id)) {
+                editingNoteId = null;
+                noteForm.reset();
+                noteContent.innerHTML = '';
+              }
+            } catch {}
+          }
+        });
+
+        btnsRow.appendChild(shareBtn);
+        btnsRow.appendChild(deleteBtn);
+
+        noteDiv.appendChild(titleRow);
+        noteDiv.appendChild(contentEl);
+        noteDiv.appendChild(btnsRow);
+
+        notesList.appendChild(noteDiv);
+      });
+    }
+
+    // On page load, check if URL has note param to load that note
+    window.addEventListener('load', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const noteId = params.get('note');
+      await fetchNotes();
+      if (noteId) {
+        const note = notes.find(n => (n._id || n.id).toString() === noteId);
+        if (note) {
+          btnNotes.click();
+          editingNoteId = note._id || note.id;
+          noteTitle.value = note.title;
+          noteContent.innerHTML = note.content;
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+    });
+
+    // To-Do List logic with same API integration
+    const todoForm = document.getElementById('todoForm');
+    const todoTitle = document.getElementById('todoTitle');
+    const todosList = document.getElementById('todosList');
+
+    let todos = [];
+    let editingTodoId = null;
+
+    // For To-Do, we will reuse the same notes API but with a "type" property to distinguish if needed.
+    // Here, we assume the backend supports it or you can adapt accordingly.
+    const todoTasksContainer = document.getElementById('todoTasksContainer');
+    const addTaskBtn = document.getElementById('addTaskBtn');
+
+// Add initial task input
+function addTaskInput(value = '') {
+  const div = document.createElement('div');
+  div.className = 'flex gap-3 items-center';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Task...';
+  input.value = value;
+  input.className = 'flex-grow border border-[#00d8ff] bg-transparent text-gray-400 px-3 py-1 focus:outline-none';
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button';
+  removeBtn.textContent = '🗑️';
+  removeBtn.className = 'text-red-500';
+  removeBtn.onclick = () => div.remove();
+
+  div.appendChild(input);
+  div.appendChild(removeBtn);
+  todoTasksContainer.appendChild(div);
+}
+
+addTaskBtn.addEventListener('click', () => addTaskInput());
+
+
+
+    async function fetchTodos() {
+      try {
+        const res = await fetch(`${apiBase}/notes/todo/${userId}`, {
+          headers: { Authorization: `Bearer ${token}`,
+            "x-usertype": userType
+          }
+        });
+        if (!res.ok) throw new Error("Failed to fetch todos");
+        const allItems = await res.json();
+        // Filter todos by a convention, e.g. type === 'todo' or title prefix, here we assume title prefix "TODO:"
+        todos = allItems; // already pure todos from backend
+        renderTodos();
+      } catch (err) {
+        console.error(err);
+        todosList.innerHTML = '<p class="text-gray-400">Failed to load to-do lists.</p>';
+      }
+    }
+
+    async function saveTodo(todo) {
+      try {
+        const res = await fetch(`${apiBase}/notes/todo`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(todo)
+        });
+        if (!res.ok) throw new Error("Failed to save todo");
+        return await res.json();
+      } catch (err) {
+        alert("Error saving to-do list");
+        throw err;
+      }
+    }
+
+    async function updateTodo(id, todo) {
+      try {
+        const res = await fetch(`${apiBase}/notes/todo/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify(todo)
+        });
+        if (!res.ok) throw new Error("Failed to update todo");
+        return await res.json();
+      } catch (err) {
+        alert("Error updating to-do list");
+        throw err;
+      }
+    }
+
+    async function deleteTodo(id) {
+      try {
+        const res = await fetch(`${apiBase}/notes/todo/${id}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!res.ok) throw new Error("Failed to delete todo");
+      } catch (err) {
+        alert("Error deleting to-do list");
+        throw err;
+      }
+    }
+    const taskContainer = document.getElementById("taskContainer");
+  
+  addTaskBtn.addEventListener("click", () => {
+  const taskBlock = document.createElement("div");
+  taskBlock.className = "flex gap-3 items-center";
+
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.disabled = true;
+
+  const taskInput = document.createElement("input");
+  taskInput.type = "text";
+  taskInput.placeholder = "Task description...";
+  taskInput.className = "flex-grow border border-[#00d8ff] bg-transparent text-gray-400 px-3 py-1 focus:outline-none";
+
+  taskBlock.appendChild(checkbox);
+  taskBlock.appendChild(taskInput);
+  taskContainer.appendChild(taskBlock);
+});
+
+todoForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!todoTitle.value.trim()) return;
+
+  const taskInputs = taskContainer.querySelectorAll("input[type='text']");
+  const tasks = [];
+
+  taskInputs.forEach((input) => {
+    const val = input.value.trim();
+    if (val) tasks.push({ text: val, done: false });
+  });
+
+  if (tasks.length === 0) {
+    alert("Please add at least one task.");
+    return;
+  }
+
+  const todoData = {
+    userId,
+    userType,
+    task: todoTitle.value.trim(),
+    dueDate: new Date(Date.now() + 86400000), // 1 day from now
+    completed: false,
+    content: JSON.stringify(tasks)
+  };
+
+  try {
+    if (editingTodoId) {
+      await updateTodo(editingTodoId, todoData);
+      editingTodoId = null;
+    } else {
+      await saveTodo(todoData);
+    }
+    todoForm.reset();
+    taskContainer.innerHTML = "";  // Clear tasks after saving
+    await fetchTodos();
+  } catch {
+    // error handled in functions
+  }
+});
+
+
+    function renderTodos() {
+      todosList.innerHTML = '';
+      if (!todos.length) {
+        todosList.innerHTML = '<p class="text-gray-400">No to-do lists saved yet.</p>';
+        return;
+      }
+      todos.forEach((todo) => {
+        const date = new Date(todo.updatedAt || todo.createdAt || todo.datetime || Date.now());
+        const formattedDate = date.toLocaleString();
+
+        const todoDiv = document.createElement('div');
+        todoDiv.className = 'border border-[#00d8ff] p-4 rounded bg-[#111111]';
+
+        const titleRow = document.createElement('div');
+        titleRow.className = 'flex justify-between items-center mb-2';
+
+        const titleEl = document.createElement('h3');
+        titleEl.className = 'font-extrabold text-[#00d8ff] text-lg cursor-pointer';
+        titleEl.textContent = todo.task;
+        titleEl.title = "Click to edit";
+        titleEl.addEventListener('click', () => {
+          editingTodoId = todo._id || todo.id;
+          todoTitle.value = todo.task;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        const dateEl = document.createElement('span');
+        dateEl.className = 'text-gray-400 text-sm';
+        dateEl.textContent = formattedDate;
+
+        titleRow.appendChild(titleEl);
+        titleRow.appendChild(dateEl);
+
+        // Parse tasks from content JSON string
+        let tasks = [];
+        try {
+          tasks = JSON.parse(todo.content);
+          if (!Array.isArray(tasks)) tasks = [];
+        } catch {
+          tasks = [];
+        }
+
+        // Tasks container
+        const tasksContainer = document.createElement('div');
+        tasksContainer.className = 'mb-3 max-h-40 overflow-y-auto space-y-1';
+
+        // Render tasks with checkboxes
+        tasks.forEach((task, index) => {
+          const taskDiv = document.createElement('div');
+          taskDiv.className = 'flex items-center gap-3';
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.checked = task.done;
+          checkbox.className = 'w-4 h-4 cursor-pointer';
+          checkbox.addEventListener('change', async () => {
+            tasks[index].done = checkbox.checked;
+            // Save updated tasks back to server
+            const updatedTodo = {
+              userId,
+              userType,
+              task: todo.task,
+              dueDate: todo.dueDate,
+              completed: todo.completed,
+              content: JSON.stringify(tasks)
+            };
+            try {
+              await updateTodo(todo._id || todo.id, updatedTodo);
+              await fetchTodos();
+            } catch {}
+          });
+
+          const label = document.createElement('label');
+          label.className = checkbox.checked ? 'line-through text-gray-500 select-none' : 'select-none';
+          label.textContent = task.text;
+
+          taskDiv.appendChild(checkbox);
+          taskDiv.appendChild(label);
+          tasksContainer.appendChild(taskDiv);
+        });
+
+        // Input to add new task
+        const newTaskDiv = document.createElement('div');
+        newTaskDiv.className = 'flex gap-3 items-center';
+
+        const newTaskInput = document.createElement('input');
+        newTaskInput.type = 'text';
+        newTaskInput.placeholder = 'Add new task...';
+        newTaskInput.className = 'flex-grow border border-[#00d8ff] bg-transparent text-gray-400 px-3 py-1 focus:outline-none';
+
+        const addTaskBtn = document.createElement('button');
+        addTaskBtn.type = 'button';
+        addTaskBtn.textContent = 'Add';
+        addTaskBtn.className = 'bg-[#00d8ff] text-black font-extrabold px-4 py-1';
+        addTaskBtn.addEventListener('click', async () => {
+          const val = newTaskInput.value.trim();
+          if (!val) return;
+          tasks.push({ text: val, done: false });
+          const updatedTodo = {
+            userId,
+            title: todo.task,
+            content: JSON.stringify(tasks)
+          };
+          try {
+            await updateTodo(todo._id || todo.id, updatedTodo);
+            newTaskInput.value = '';
+            await fetchTodos();
+          } catch {}
+        });
+
+        newTaskDiv.appendChild(newTaskInput);
+        newTaskDiv.appendChild(addTaskBtn);
+
+        // Share button
+        const shareBtn = document.createElement('button');
+        shareBtn.className = 'bg-[#00d8ff] text-black font-extrabold px-4 py-1 mt-2';
+        shareBtn.textContent = 'Share';
+        shareBtn.title = 'Copy shareable link';
+        shareBtn.addEventListener('click', () => {
+          const url = new URL(window.location.href);
+          url.searchParams.set('todo', todo._id || todo.id);
+          navigator.clipboard.writeText(url.toString()).then(() => {
+            alert('Link copied to clipboard!');
+          });
+        });
+
+        // Delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'bg-red-600 text-white font-extrabold px-4 py-1 mt-2 ml-2';
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.title = 'Delete to-do list';
+        deleteBtn.addEventListener('click', async () => {
+          if (confirm('Are you sure you want to delete this to-do list?')) {
+            try {
+              await deleteTodo(todo._id || todo.id);
+              await fetchTodos();
+              if (editingTodoId === (todo._id || todo.id)) {
+                editingTodoId = null;
+                todoForm.reset();
+              }
+            } catch {}
+          }
+        });
+
+        todoDiv.appendChild(titleRow);
+        todoDiv.appendChild(tasksContainer);
+        todoDiv.appendChild(newTaskDiv);
+        todoDiv.appendChild(shareBtn);
+        todoDiv.appendChild(deleteBtn);
+
+        todosList.appendChild(todoDiv);
+      });
+    }
+
+    // On page load, check if URL has todo param to load that todo
+    window.addEventListener('load', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const todoId = params.get('todo');
+      await fetchTodos();
+      if (todoId) {
+        const todo = todos.find(t => (t._id || t.id).toString() === todoId);
+        if (todo) {
+          btnTodo.click();
+          editingTodoId = todo._id || todo.id;
+          todoTitle.value = todo.title.replace(/^TODO:/, '');
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0d0d1f;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #131335;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sidebar h2 {
+  color: #00d8ff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  padding: 10px;
+  background: none;
+  color: #ffffffaa;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.sidebar li.active,
+.sidebar li:hover {
+  background-color: #00d8ff;
+  color: #000;
+}
+
+/* Content Area */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.section {
+  display: none;
+}
+
+.section.visible {
+  display: block;
+}
+
+form {
+  margin-bottom: 25px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #00d8ff;
+  background-color: #1a1a2e;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #00d8ff;
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.item-list {
+  margin-top: 10px;
+}
+
+.note-item,
+.todo-item {
+  background-color: #111122;
+  padding: 15px;
+  border-left: 5px solid #00d8ff;
+  margin-bottom: 10px;
+}
+
+.note-item h3,
+.todo-item h3 {
+  margin-bottom: 5px;
+  color: #00d8ff;
+}
+
+.task-input {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #00d8ff;
+  background-color: #0f0f2e;
+  color: white;
+  margin-right: 5px;
+}
+
+.task-check,
+.small-checkbox {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  transform: translateY(2px);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Assignment | EduCrypt</title>
+  <link rel="stylesheet" href="../css/upload-assignment.css" />
+</head>
+<body class="bg-[#0d0d1d] text-white font-sans">
+
+  <header class="px-6 py-4 flex justify-between items-center border-b border-[#00d8ff]">
+    <h1 class="text-2xl text-[#00d8ff] font-bold">EduCrypt</h1>
+    <nav>
+      <a href="student-dashboard.html" class="text-white hover:text-[#00d8ff]">Back to Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="max-w-xl mx-auto mt-10 p-6 rounded-lg bg-[#111111] shadow-lg border border-[#00d8ff]">
+    <h2 class="text-2xl font-bold text-center text-[#00d8ff] mb-4">Upload Assignment</h2>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <div class="mb-4">
+        <label for="assignmentFile" class="block font-semibold mb-1">Choose your assignment file:</label>
+        <input type="file" id="assignmentFile" name="file" required class="w-full p-2 bg-[#1a1a2e] border border-gray-600 rounded" />
+      </div>
+
+      <div class="mb-4">
+        <label for="encryptionKey" class="block font-semibold mb-1">Enter encryption key:</label>
+        <input type="password" id="encryptionKey" name="password" autocomplete="Enter your secret key." required ...>
+          <class="w-full p-2 bg-[#1a1a2e] border border-gray-600 rounded" />
+        <small class="text-sm text-gray-400">⚠️ This key will be required to view your submission later.</small>
+      </div>
+
+      <button type="submit" class="w-full bg-[#00d8ff] text-black font-bold py-2 rounded hover:bg-[#00c0e0] transition-all">
+        Submit Assignment
+      </button>
+    </form>
+
+    <p id="statusMessage" class="mt-4 text-center"></p>
+  </main>
+
+  <script src="../js/upload-assignment.js"></script>
+</body>
+</html>

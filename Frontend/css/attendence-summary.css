@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #0a0a1a;
+  padding: 30px;
+  color: white;
+}
+
+.attendance-container {
+  max-width: 800px;
+  margin: auto;
+  background: #1a1a2e;
+  padding: 30px;
+  border: 1px solid #00f2fe;
+  border-radius: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px;
+  background: #111;
+  border: 1px solid #00f2fe;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+ul li > div:last-child {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background: #00f2fe;
+  color: black;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0288d1;
+}
+
+.feedback.success {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.feedback.error {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
